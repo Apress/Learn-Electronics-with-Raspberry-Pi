@@ -1,0 +1,8 @@
+[Desktop Entry]
+encoding=UTF-8
+Type=Application
+Exec=/usr/bin/qjoypad robot
+Terminal=false
+Name=QJoyPad
+Comment=Controller support
+

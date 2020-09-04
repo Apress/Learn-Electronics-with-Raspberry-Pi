@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Train Control</title>
+<!-- Add Jquery -->
+<script type="text/javascript" src="/public/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<h1>Train Control</h1>
+
+<div id="status">...</div>
+
+<select id="speed">
+    <option selected="selected">0</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+</select>
+
+<script>
+// call back function from ajax code
+function updateStatus (data) {
+    // Update screen with new status
+    $('#status').html(data);
+}
+
+function changeSpeed (speed) {
+    $.get('/control', 'speed='+speed, updateStatus);
+}
+
+$( "#speed" ).change(function() {
+    changeSpeed($( "#speed" ).val())
+});
+
+</script>
+</body>
+</html>

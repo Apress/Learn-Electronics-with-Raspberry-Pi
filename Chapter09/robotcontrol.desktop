@@ -1,0 +1,9 @@
+[Desktop Entry]
+encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=lxterminal -e "/home/pi/robotcontrol.py"
+Terminal=true
+Name=Robot Control
+Comment=control a robot
+

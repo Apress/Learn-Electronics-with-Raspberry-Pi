@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi Camera</title>
+<!-- Add Jquery -->
+<script type="text/javascript" src="/public/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<h1>Raspberry Pi Camera</h1>
+
+<iframe src="http://192.168.0.153:8081" style="width:400px;height:300px;"></iframe>
+
+
+
+<div id="status">...</div>
+
+<p>
+<button onclick="moveCamera('tilt', -1)">Up</button>
+<br />
+<button onclick="moveCamera('pan', 1)">Left</button><button onclick="moveCamera('pan', -1)">Right</button>
+<br />
+<button onclick="moveCamera('tilt', 1)">Down</button>
+</p>
+<p>
+<button onclick="setLight('on')">Light On</button><button onclick="setLight('off')">Light Off</button>
+</p>
+
+
+<script>
+// call back function from ajax code
+function updateStatus (data) {
+    // Update screen with new status
+    $('#status').html(data);
+}
+
+function moveCamera (pantilt, direction) {
+    $.get('/move', 'pantilt='+pantilt+'&direction='+direction, updateStatus);
+}
+
+function setLight (set_status) {
+    $.get('/light', 'set='+set_status, updateStatus);
+}
+
+
+</script>
+</body>
+</html>
